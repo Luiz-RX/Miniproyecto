@@ -7,6 +7,7 @@ public class CameraSwitcher : MonoBehaviour
     public CinemachineCamera aimingCamera; // Cámara de apuntado
 
     private bool isAiming = false;
+    public bool mouseLock;
 
     private void Start()
     {
@@ -24,6 +25,14 @@ public class CameraSwitcher : MonoBehaviour
         {
             isAiming = false;
             SwitchCamera();
+        }
+        if (mouseLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

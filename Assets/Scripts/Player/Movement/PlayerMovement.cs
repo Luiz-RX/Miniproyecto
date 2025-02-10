@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
 
     private Camera mainCamera;
+    public Input playerInput;
 
     void Start()
     {
@@ -70,10 +71,17 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             animator.SetTrigger("Jump");
-            
-            animator.SetBool("Jump", false);
-
+            animator.ResetTrigger("Jump");
         }
+
+        //if (Input.GetButtonDown("Aim"))
+        //{
+        //    animator.SetLayerWeight(1, 5);
+        //}
+        //else
+        //{
+        //    animator.SetLayerWeight(1, 0);
+        //}
 
         // Actualizamos el Animator
         animator.SetFloat("Speed", direction.magnitude * (isSprinting ? 2f : 1f));
