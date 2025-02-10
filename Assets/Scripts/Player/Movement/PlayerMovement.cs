@@ -12,17 +12,18 @@ public class PlayerMovement : MonoBehaviour
     [Header("Salto")]
     public float jumpHeight = 1.2f;
     public float gravity = -9.81f;
-    public Transform groundCheck;
-    public float groundDistance = 0.2f;
+    public float groundCheckDistance = 0.3f;
     public LayerMask groundMask;
 
     private CharacterController controller;
     private Animator animator;
     private Vector3 velocity;
     private bool isGrounded;
-
     private Camera mainCamera;
-    public Input playerInput;
+
+    private Vector2 moveInput;
+    private bool isSprinting;
+    private bool jumpRequested;
 
     void Start()
     {
@@ -33,59 +34,80 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Comprobamos si estamos en el suelo
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        CheckGround();
+        HandleMovement();
+        HandleJump();
+        ApplyGravity();
+        UpdateAnimator();
+    }
 
-        // Reiniciamos velocidad en Y si está en el suelo
+    // Detección de suelo usando Raycast
+    private void CheckGround()
+    {
+        RaycastHit hit;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundMask);
+
         if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
+            velocity.y = -2f; // Evita acumulación de gravedad
+    }
 
-        // Input de movimiento
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+    // Movimiento basado en la cámara
+    private void HandleMovement()
+    {
+        Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
-        // Correr si pulsamos Shift
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
-        float currentSpeed = isSprinting ? runSpeed : walkSpeed;
-
-        // Movimiento basado en la dirección de la cámara
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSpeed, 0.1f);
+            float angle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle, rotationSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
+            float currentSpeed = isSprinting ? runSpeed : walkSpeed;
+            controller.Move(moveDir * currentSpeed * Time.deltaTime);
         }
+    }
 
-        // Aplicamos gravedad
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        // Saltar
-        if (Input.GetButtonDown("Jump") && isGrounded)
+    // Manejo del salto
+    private void HandleJump()
+    {
+        if (jumpRequested && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             animator.SetTrigger("Jump");
-            animator.ResetTrigger("Jump");
+            jumpRequested = false;
         }
+    }
 
-        //if (Input.GetButtonDown("Aim"))
-        //{
-        //    animator.SetLayerWeight(1, 5);
-        //}
-        //else
-        //{
-        //    animator.SetLayerWeight(1, 0);
-        //}
+    // Aplicar gravedad
+    private void ApplyGravity()
+    {
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+    }
 
-        // Actualizamos el Animator
-        animator.SetFloat("Speed", direction.magnitude * (isSprinting ? 2f : 1f));
+    // Actualizar Animator
+    private void UpdateAnimator()
+    {
+        animator.SetFloat("Speed", moveInput.magnitude * (isSprinting ? 2f : 1f));
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("Sprint", isSprinting);
+    }
+
+    // Eventos de Input System
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        isSprinting = context.ReadValue<float>() > 0;
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            jumpRequested = true;
     }
 }
