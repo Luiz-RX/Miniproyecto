@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool isSprinting;
     private bool jumpRequested;
-    private float aimLayerWeight = 0f;
+    
 
     void Start()
     {
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         ApplyGravity();
         UpdateAnimator();
-        HandleAiming();
+        
     }
 
     // Detección de suelo usando Raycast
@@ -100,15 +100,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Sprint", isSprinting);
     }
 
-    private void HandleAiming()
-    {
-        bool isAiming = Input.GetMouseButton(1); // Se mantiene mientras el botón derecho está presionado
-        float targetWeight = isAiming ? 1f : 0f;
-
-        aimLayerWeight = Mathf.MoveTowards(aimLayerWeight, targetWeight, Time.deltaTime * 5f);
-        animator.SetLayerWeight(1, aimLayerWeight);
-
-    }
+    
     // Eventos de Input System
     public void OnMove(InputAction.CallbackContext context)
     {
