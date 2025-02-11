@@ -80,7 +80,7 @@ public class PlayerShoot : MonoBehaviour
 
     }
 
-    private void HandleCursor()
+    public void HandleCursor()
     {
         if (mouseLock)
         {
