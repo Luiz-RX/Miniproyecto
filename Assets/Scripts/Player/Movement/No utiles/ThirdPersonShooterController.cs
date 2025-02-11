@@ -14,14 +14,14 @@
 //    [SerializeField] private Transform pfBulletProjectile;
 //    [SerializeField] private Transform spawnBulletPosition;
 
-//    private ThirdPersonController thirdPersonController;
+//    private PlayerMovement playerMovement;
 //    private GameAssetsInputs starterAssetsInputs;
 //    private Animator animator;
 
 //    private void Awake()
 //    {
 //        starterAssetsInputs = GetComponent<GameAssetsInputs>();
-//        thirdPersonController = GetComponent<ThirdPersonController>();
+//        playerMovement = GetComponent<ThirdPersonController>();
 //        animator = GetComponent<Animator>();
 //    }
 //    private void Update()
@@ -39,8 +39,8 @@
 //        if (starterAssetsInputs.aim)
 //        {
 //            aimVirtualCamera.gameObject.SetActive(true);
-//            thirdPersonController.SetSensitivity(aimSensitivity);
-//            thirdPersonController.SetRotateOnMove(false);
+//            playerMovement.SetSensitivity(aimSensitivity);
+//            playerMovement.SetRotateOnMove(false);
 //            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
 //            Vector3 worldAimTarget = mouseWorldPosition;
@@ -49,15 +49,15 @@
 
 //            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 //        }
-//        else 
-//        { 
+//        else
+//        {
 //            aimVirtualCamera.gameObject.SetActive(false);
-//            thirdPersonController.SetSensitivity(normalSensitivity);
-//            thirdPersonController.SetRotateOnMove(true);
+//            playerMovement.SetSensitivity(normalSensitivity);
+//            playerMovement.SetRotateOnMove(true);
 //            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
 //        }
 
-//        if (starterAssetsInputs.shoot) 
+//        if (starterAssetsInputs.shoot)
 //        {
 
 //            Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;

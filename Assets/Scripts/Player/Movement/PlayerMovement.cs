@@ -1,3 +1,4 @@
+using GameAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     private CharacterController controller;
+    
     private Animator animator;
     private Vector3 velocity;
     private bool isGrounded;
@@ -24,9 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool isSprinting;
     private bool jumpRequested;
+    private float aimLayerWeight = 0f;
 
     void Start()
     {
+        
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         mainCamera = Camera.main;
@@ -39,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         ApplyGravity();
         UpdateAnimator();
+        HandleAiming();
     }
 
     // Detección de suelo usando Raycast
@@ -75,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             animator.SetTrigger("Jump");
+         
             jumpRequested = false;
         }
     }
@@ -94,6 +100,15 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Sprint", isSprinting);
     }
 
+    private void HandleAiming()
+    {
+        bool isAiming = Input.GetMouseButton(1); // Se mantiene mientras el botón derecho está presionado
+        float targetWeight = isAiming ? 1f : 0f;
+
+        aimLayerWeight = Mathf.MoveTowards(aimLayerWeight, targetWeight, Time.deltaTime * 5f);
+        animator.SetLayerWeight(1, aimLayerWeight);
+
+    }
     // Eventos de Input System
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -107,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started)
-            jumpRequested = true;
+        if (context.started) jumpRequested = true;
     }
 }

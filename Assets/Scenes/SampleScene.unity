@@ -753,9 +753,8 @@ GameObject:
   - component: {fileID: 1390125535}
   - component: {fileID: 1390125540}
   - component: {fileID: 1390125539}
-  - component: {fileID: 1390125538}
-  - component: {fileID: 1390125537}
   - component: {fileID: 1390125536}
+  - component: {fileID: 1390125537}
   m_Layer: 0
   m_Name: Aim Camera
   m_TagString: Untagged
@@ -879,22 +878,6 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
---- !u!114 &1390125538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390125534}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a076c17fe76165e4f8ed21498b877bf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Modifiers: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1390125539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,7 +978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390125534}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212338, y: 0.000000006836714, z: -0.0000000010522705, w: 0.98836154}
+  m_LocalRotation: {x: 0.15212345, y: 0, z: 0, w: 0.98836154}
   m_LocalPosition: {x: -3.1056366, y: -34.913296, z: 2.900919}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1515,7 +1498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otsCamera: {fileID: 1974139924}
   aimingCamera: {fileID: 1390125535}
-  mouseLock: 0
+  mouseLock: 1
 --- !u!4 &543450653587837273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8461228575495471211, guid: d8947d5d9c8a97d4da95610bb21a56ac, type: 3}
@@ -1622,6 +1605,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9136913006983097435, guid: d8947d5d9c8a97d4da95610bb21a56ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5866666021937695534}
+    - targetCorrespondingSourceObject: {fileID: 9136913006983097435, guid: d8947d5d9c8a97d4da95610bb21a56ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5866666021937695536}
   m_SourcePrefab: {fileID: 100100000, guid: d8947d5d9c8a97d4da95610bb21a56ac, type: 3}
 --- !u!114 &5866666021937695531
 MonoBehaviour:
@@ -1759,6 +1745,27 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5866666021937695536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149133528035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3227199f317c4d5448d2c6e8b5c6fd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {x: 0, y: 0}
+  look: {x: 0, y: 0}
+  jump: 0
+  sprint: 0
+  aim: 0
+  shoot: 0
+  analogMovement: 0
+  cursorLocked: 1
+  cursorInputForLook: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
