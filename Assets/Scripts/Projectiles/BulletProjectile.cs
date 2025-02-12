@@ -8,7 +8,10 @@ public class BulletProjectile : MonoBehaviour
     [SerializeField] private Transform vfxHitGreen;
     [SerializeField] private Transform vfxHitRed;
 
+    [SerializeField] private int bulletDamage;
+
     private Rigidbody bulletRigidbody;
+    
 
     private void Awake()
     {
@@ -26,7 +29,13 @@ public class BulletProjectile : MonoBehaviour
         if (other.GetComponent<BulletTarget>() != null)
         {
             // Hit target
-            Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
+
+            if (other.GetComponent<Zombie>() != null)
+            {
+                other.GetComponent<Zombie>().TakeDamage(bulletDamage); 
+                Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
+            }
+            else Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
         }
         else
         {
