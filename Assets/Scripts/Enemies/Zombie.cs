@@ -14,17 +14,7 @@ public class Zombie : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    private void Update()
-    {
-        if (navMeshAgent.velocity.magnitude > 0.1f)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
-    }
+    
 
     public void TakeDamage(int damageAmount)
     {
@@ -37,6 +27,7 @@ public class Zombie : MonoBehaviour
             if (randomValue == 0)
             {
                 animator.SetTrigger("Die1");
+
             }
             else
             {
@@ -48,5 +39,17 @@ public class Zombie : MonoBehaviour
         {
             animator.SetTrigger("Damage");
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 2f); //Attacking
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 15f); //Detection (Start Chasing)
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 18f); //Stop Chasing
     }
 }
