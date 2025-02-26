@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Salto")]
     public float jumpHeight = 1.2f;
-    public float gravity = -9.81f;
-    public float groundCheckDistance = 0.3f;
+    public float gravity = -13f;
+    public float groundCheckDistance = 0.03f;
     public LayerMask groundMask;
 
     private CharacterController controller;

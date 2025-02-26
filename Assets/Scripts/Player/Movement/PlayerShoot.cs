@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private CinemachineCamera aimVirtualCamera;
+    [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] private Transform debugTransform;
     [SerializeField] private Transform pfBulletProjectile;
@@ -20,6 +20,7 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        virtualCamera.Lens.FieldOfView = 60;
     }
     void Update()
     {
@@ -46,8 +47,8 @@ public class PlayerShoot : MonoBehaviour
         }
         if (isAiming)
         {
-            aimVirtualCamera.gameObject.SetActive(true);
-           
+            virtualCamera.Lens.FieldOfView = 40;
+
             //playerMovement.SetRotateOnMove(false);
             //animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
             aimLayerWeight = Mathf.MoveTowards(aimLayerWeight, 1f, Time.deltaTime * 5f);
@@ -69,8 +70,8 @@ public class PlayerShoot : MonoBehaviour
         }
         else
         {
-            aimVirtualCamera.gameObject.SetActive(false);
-            
+            virtualCamera.Lens.FieldOfView = 60;
+
             //playerMovement.SetRotateOnMove(true);
             //animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
             aimLayerWeight = Mathf.MoveTowards(aimLayerWeight, 0f, Time.deltaTime * 5f);

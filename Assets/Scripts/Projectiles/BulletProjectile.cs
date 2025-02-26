@@ -30,9 +30,9 @@ public class BulletProjectile : MonoBehaviour
         {
             // Hit target
 
-            if (other.GetComponent<Zombie>() != null)
+            if (other.GetComponent<HealthEnemies>() != null)
             {
-                other.GetComponent<Zombie>().TakeDamage(bulletDamage); 
+                other.GetComponent<HealthEnemies>().TakeDamage(bulletDamage); 
                 Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
             }
             else Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
