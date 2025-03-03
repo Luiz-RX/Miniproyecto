@@ -60,13 +60,13 @@ public class PlayerShoot : MonoBehaviour
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 
-            if (Input.GetMouseButtonDown(0))
-            {
+            //if (Input.GetMouseButtonDown(0))
+            //{
 
-                Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-                Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            //    Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+            //    Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
 
-            }
+            //}
         }
         else
         {
