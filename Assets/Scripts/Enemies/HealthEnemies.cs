@@ -50,7 +50,7 @@ public class HealthEnemies : MonoBehaviour
     private IEnumerator DestroyAfterTime()
     {
         yield return new WaitForSeconds(destroyTimer);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     private void OnDrawGizmos()

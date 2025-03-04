@@ -35,10 +35,10 @@ public class Gun : Weapon
         aimTarget.y = transform.position.y; // Mantiene la altura del jugador
         Vector3 aimDirection = (aimTarget - transform.position).normalized;
 
-        if (isAiming)
-        {
-            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
-        }
+        //if (isAiming)
+        //{
+        //    transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+        //}
     }
 
     private Vector3 GetAimPoint()
