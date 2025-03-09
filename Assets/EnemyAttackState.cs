@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,12 +7,15 @@ public class EnemyAttackState : StateMachineBehaviour
 
     NavMeshAgent agent;
     Transform player;
+   
 
     public float stopAttackingDistance = 2.5f;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        
     }
 
 
@@ -26,6 +30,8 @@ public class EnemyAttackState : StateMachineBehaviour
             animator.SetBool("isAttacking", false);
         }
     }
+
+   
 
     private void LookAtPlayer() 
     {

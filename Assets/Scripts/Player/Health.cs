@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            //Recibir daño
+            //Recibir daño animacion
         }
     }
     }
