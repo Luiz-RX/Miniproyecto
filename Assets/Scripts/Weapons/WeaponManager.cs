@@ -18,9 +18,10 @@ public class WeaponManager : MonoBehaviour
 
     void Update()
     {
-        if (currentWeapon != null && Input.GetMouseButtonDown(0)) // Click izquierdo
+        if (currentWeapon != null && Input.GetMouseButtonDown(0)) 
         {
-            currentWeapon.Shoot();
+            if (Input.GetMouseButton(1)) currentWeapon.Shoot();
+           
         }
     }
 }
