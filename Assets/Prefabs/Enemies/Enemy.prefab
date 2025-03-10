@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7935946225412695108}
   - component: {fileID: 5026295424201001146}
+  - component: {fileID: 737493550036171640}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -90,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 1188933194233852807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.293, y: 1.338, z: 1.004}
+  m_LocalPosition: {x: 0.234, y: 1.338, z: 1.284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,8 +116,22 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.53
-  m_Center: {x: -0.29925156, y: 0, z: 0}
+  m_Radius: 0.55
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &737493550036171640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188933194233852807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75c0b0dc2b0a564b895254b2c911d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 5
+  attackCollider: {fileID: 1188933194233852807}
 --- !u!1 &1388338142344527330
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,7 +959,7 @@ GameObject:
   - component: {fileID: 8948558918576574907}
   - component: {fileID: 407653568153982065}
   - component: {fileID: 2937670153416055578}
-  - component: {fileID: 7960190109002193304}
+  - component: {fileID: 6177989963313561366}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1075,7 +1090,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7960190109002193304
+--- !u!114 &6177989963313561366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

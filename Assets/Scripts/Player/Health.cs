@@ -21,4 +21,9 @@ public class Health : MonoBehaviour
             //Recibir daño animacion
         }
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
     }

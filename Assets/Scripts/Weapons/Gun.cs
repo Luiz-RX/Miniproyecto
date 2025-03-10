@@ -53,4 +53,13 @@ public class Gun : Weapon
 
         return ray.GetPoint(1000f); // Si no impacta, dispara lejos en esa dirección
     }
+
+    public int GetAmmo()
+    {
+        return ammo;
+    }
+    public int GetMaxAmmo()
+    {
+        return maxAmmo;
+    }
 }
