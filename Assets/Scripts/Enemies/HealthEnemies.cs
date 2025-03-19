@@ -8,6 +8,7 @@ public class HealthEnemies : MonoBehaviour
     private Animator animator;
     private NavMeshAgent navMeshAgent;
     private CapsuleCollider capsuleCollider;
+    private UIManager uiManager;
 
     [SerializeField] private float destroyTimer = 15f;
     private bool isDead = false;
@@ -17,6 +18,7 @@ public class HealthEnemies : MonoBehaviour
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        uiManager = FindAnyObjectByType<UIManager>();
     }
 
     public void TakeDamage(int damageAmount)
@@ -43,6 +45,8 @@ public class HealthEnemies : MonoBehaviour
 
         int randomValue = Random.Range(0, 2);
         animator.SetTrigger(randomValue == 0 ? "Die1" : "Die2");
+        if (uiManager != null) uiManager = FindAnyObjectByType<UIManager>();
+        uiManager.EnemyKill();
 
         StartCoroutine(DestroyAfterTime()); // Inicia el temporizador de eliminación
     }
