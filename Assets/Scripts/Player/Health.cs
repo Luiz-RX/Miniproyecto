@@ -22,6 +22,10 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void GiveHealth(int healthToHeal)
+    {
+        health = Mathf.Clamp((health + healthToHeal), 0, 100);
+    }
     public int GetHealth()
     {
         return health;

@@ -54,6 +54,10 @@ public class Gun : Weapon
         return ray.GetPoint(1000f); // Si no impacta, dispara lejos en esa dirección
     }
 
+    public void GiveAmmo(int AmmoToGet)
+    {
+        ammo = Mathf.Clamp((ammo + AmmoToGet), 0, 100);
+    }
     public int GetAmmo()
     {
         return ammo;
