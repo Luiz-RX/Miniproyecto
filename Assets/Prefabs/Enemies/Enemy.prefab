@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75c0b0dc2b0a564b895254b2c911d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
+  attackDamage: 15
   attackCollider: {fileID: 1188933194233852807}
 --- !u!114 &8674544829438139244
 MonoBehaviour:

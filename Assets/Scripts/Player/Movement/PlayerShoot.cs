@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
     private Animator animator;
     private float aimLayerWeight = 0f;
 
-    public bool mouseLock;
+    private bool mouseLock = true;
 
 
 
@@ -21,11 +21,12 @@ public class PlayerShoot : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         virtualCamera.Lens.FieldOfView = 60;
+        HandleCursor();
     }
     void Update()
     {
         HandleAimingShoot();
-        HandleCursor();
+        
     }
 
     private void HandleAimingShoot()
