@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
+    private Animator animator;
+    private CharacterController characterController;
     [SerializeField] private int health = 100;
-    void Update()
+
+
+    private void Start()
     {
-        //Mostrar en pantalla la vida
+        characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damageAmount)
@@ -14,11 +18,13 @@ public class Health : MonoBehaviour
         health -= damageAmount;
         if (health <= 0)
         {
-            //Morir
+            animator.SetTrigger("Die");
+            characterController.enabled = false;
+            
         }
         else
         {
-            //Recibir daño animacion
+            animator.SetTrigger("Damage");
         }
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private int attackDamage = 5;
+    [SerializeField] private int attackDamage;
     private Health playerHealth;
     [SerializeField] private GameObject attackCollider;
 

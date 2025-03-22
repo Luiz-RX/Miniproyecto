@@ -121,6 +121,7 @@ MonoBehaviour:
   fireRate: 5
   ammo: 100
   maxAmmo: 100
+  ammoPerLoad: 1
   bulletPrefab: {fileID: 6863857337172796869, guid: c1559fa226b65814689aae7e4a8a69bc, type: 3}
   firePoint: {fileID: 3698365831744826990}
   aimColliderLayerMask:

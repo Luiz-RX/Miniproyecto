@@ -22,7 +22,7 @@ public class Gun : Weapon
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(shootDirection));
 
-            ammo--;
+            ammo -= ammoPerLoad;
             nextFireTime = Time.time + 1f / fireRate;
         }
     }
