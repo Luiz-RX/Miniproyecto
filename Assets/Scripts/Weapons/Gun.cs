@@ -5,8 +5,15 @@ public class Gun : Weapon
     public GameObject bulletPrefab;
     public Transform firePoint;
     [SerializeField] private LayerMask aimColliderLayerMask; // Capas que afectan la mira
+    [SerializeField] private AudioClip fireClip;
+    private AudioSource audioSource;
 
     private float nextFireTime = 0f;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -21,7 +28,7 @@ public class Gun : Weapon
             Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(shootDirection));
-
+            audioSource.PlayOneShot(fireClip);
             ammo -= ammoPerLoad;
             nextFireTime = Time.time + 1f / fireRate;
         }

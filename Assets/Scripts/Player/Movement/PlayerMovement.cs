@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool isSprinting;
     private bool jumpRequested;
+
+    [SerializeField] AudioClip stepSound;
+    private AudioSource audioSource;
     
 
     void Start()
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         mainCamera = Camera.main;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -115,5 +119,10 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started) jumpRequested = true;
+    }
+
+    public void PlayOnStep()
+    {
+        audioSource.PlayOneShot(stepSound);
     }
 }
