@@ -116,8 +116,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.55
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.7054666
+  m_Center: {x: 0.15546668, y: 0, z: 0}
 --- !u!114 &737493550036171640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75c0b0dc2b0a564b895254b2c911d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 5
+  attackDamage: 20
   attackCollider: {fileID: 1188933194233852807}
 --- !u!1 &1388338142344527330
 GameObject:
