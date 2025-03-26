@@ -12,7 +12,7 @@ public class WeaponPickup : MonoBehaviour
             if (weaponManager)
             {
                 weaponManager.EquipWeapon(weaponPrefab);
-                
+                Destroy(gameObject);
             }
         }
     }

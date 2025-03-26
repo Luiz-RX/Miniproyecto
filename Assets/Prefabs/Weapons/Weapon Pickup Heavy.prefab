@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7892615982073359803}
   - component: {fileID: 9035894110523586593}
   - component: {fileID: 1245852911435464568}
+  - component: {fileID: 7587928583864180237}
   m_Layer: 0
   m_Name: ArmaTocha
   m_TagString: Untagged
@@ -87,6 +88,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!111 &7587928583864180237
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016741173531082418}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 3f702d43eaeb5914c93af67804be1140, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3f702d43eaeb5914c93af67804be1140, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &7901703805227036174
 GameObject:
   m_ObjectHideFlags: 0
