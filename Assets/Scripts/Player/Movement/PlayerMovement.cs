@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        
+        Physics.IgnoreLayerCollision(6, 7);
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         mainCamera = Camera.main;

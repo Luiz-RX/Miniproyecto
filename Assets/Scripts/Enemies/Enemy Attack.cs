@@ -8,7 +8,8 @@ public class EnemyAttack : MonoBehaviour
 
     private void Start()
     {
-      attackCollider.SetActive(false);
+        if (CompareTag("Enemy")) attackCollider.SetActive(false);
+        
     }
 
     private void OnTriggerEnter(Collider other)
