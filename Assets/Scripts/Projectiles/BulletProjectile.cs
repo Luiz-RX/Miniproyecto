@@ -7,11 +7,9 @@ public class BulletProjectile : MonoBehaviour
 
     [SerializeField] private Transform vfxHitGreen;
     [SerializeField] private Transform vfxHitRed;
-
     [SerializeField] private int bulletDamage;
 
     private Rigidbody bulletRigidbody;
-    
 
     private void Awake()
     {
@@ -26,23 +24,25 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<BulletTarget>() != null)
-        {
-            // Hit target
+        HealthEnemies enemyHealth = other.GetComponent<HealthEnemies>();
+        Health playerHealth = other.GetComponent<Health>();
 
-            if (other.GetComponent<HealthEnemies>() != null)
-            {
-                other.GetComponent<HealthEnemies>().TakeDamage(bulletDamage); 
-                Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
-            }
-            else Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
-        }
-        else
+        bool hitSomething = false;
+
+        if (enemyHealth != null)
         {
-            // Hit something else
-            Instantiate(vfxHitRed, transform.position, Quaternion.identity);
+            enemyHealth.TakeDamage(bulletDamage);
+            hitSomething = true;
         }
-        Destroy(gameObject);
+
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(bulletDamage);
+            hitSomething = true;
+        }
+
+        Instantiate(hitSomething ? vfxHitGreen : vfxHitRed, transform.position, Quaternion.identity);
+        Destroy(gameObject, 0.1f); // Da tiempo para que los efectos se reproduzcan
     }
 
 }
