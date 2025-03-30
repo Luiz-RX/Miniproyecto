@@ -21,4 +21,9 @@ public class LoseWinManager : MonoBehaviour
     {
         SceneManager.LoadScene(currentLevelName);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
